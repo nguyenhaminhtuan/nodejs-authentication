@@ -1,3 +1,4 @@
+'use strict';
 const logger = require('../utils/logger');
 const pinoHttp = require('pino-http');
 

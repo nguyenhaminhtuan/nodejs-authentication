@@ -1,3 +1,4 @@
+'use strict';
 const { Router } = require('express');
 const healthController = require('./health');
 

@@ -7,7 +7,7 @@ const errorHandler = require('./helpers/error-handler');
 
 const server = http.createServer(app);
 
-server.listen(config.get('PORT'), config.get('HOST'), () => {
+server.listen(config.get('app.port'), config.get('app.host'), () => {
   const addy = server.address();
   logger.info(`Server running on http://${addy.address}:${addy.port}`);
 });

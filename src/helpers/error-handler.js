@@ -19,7 +19,7 @@ function handleNotFound(req, res, next) {
 }
 
 function handleError(err, req, res, next) {
-  if (config.get('NODE_ENV') === 'production') {
+  if (config.get('env') === 'production') {
     if (!isNonTrustedError(err)) {
       return res
         .status(err.statusCode)
