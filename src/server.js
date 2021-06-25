@@ -16,6 +16,8 @@ process.on('unhandledRejection', (error) => {
   throw error;
 });
 process.on('uncaughtException', (error) => {
+  logger.error({ err: error });
+
   if (errorHandler.isNonTrustedError(error)) {
     process.exit(1);
   }

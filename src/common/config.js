@@ -51,4 +51,32 @@ module.exports = convict({
       default: [],
     },
   },
+  db: {
+    host: {
+      env: 'DB_HOST',
+      format: String,
+      default: 'localhost',
+    },
+    port: {
+      env: 'DB_PORT',
+      format: 'port',
+      default: 5432,
+    },
+    database: {
+      env: 'DB_DATABASE',
+      format: String,
+      default: 'auth',
+    },
+    user: {
+      env: 'DB_USER',
+      format: String,
+      default: 'postgres',
+    },
+    password: {
+      env: 'DB_PASSWORD',
+      format: String,
+      default: 'admin',
+      sensitive: true,
+    },
+  },
 });
