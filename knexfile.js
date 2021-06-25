@@ -1,6 +1,9 @@
 'use strict';
 const config = require('./src/common/config');
 
+/**
+ * @type {import('knex').Knex.Config}
+ */
 module.exports = {
   client: 'pg',
   connection: {

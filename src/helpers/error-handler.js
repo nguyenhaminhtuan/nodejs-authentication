@@ -6,6 +6,10 @@ const {
   NotFoundError,
 } = require('../common/errors');
 
+/**
+ * @param {Error} err
+ * @returns {boolean}
+ */
 function isNonTrustedError(err) {
   if (err instanceof AppError && err.isOperational) {
     return false;
@@ -14,10 +18,16 @@ function isNonTrustedError(err) {
   return true;
 }
 
+/**
+ * @type {import('express').Handler}
+ */
 function handleNotFound(req, res, next) {
   return next(new NotFoundError());
 }
 
+/**
+ * @type {import('express').ErrorRequestHandler}
+ */
 function handleError(err, req, res, next) {
   if (config.get('env') === 'production') {
     if (!isNonTrustedError(err)) {

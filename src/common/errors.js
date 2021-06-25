@@ -1,5 +1,10 @@
 'use strict';
 class AppError extends Error {
+  /**
+   * @param {string} name
+   * @param {string} message
+   * @param {boolean} isOperational
+   */
   constructor(name, message, isOperational = true) {
     super(message);
     this.name = name;
@@ -12,6 +17,11 @@ class AppError extends Error {
 }
 
 class HttpError extends AppError {
+  /**
+   * @param {string} name
+   * @param {string} message
+   * @param {number} statusCode
+   */
   constructor(name, message, statusCode) {
     super(name, message);
     this.statusCode = statusCode;
@@ -19,6 +29,9 @@ class HttpError extends AppError {
 }
 
 class InternalServerError extends AppError {
+  /**
+   * @param {string} message
+   */
   constructor(message = 'Internal Server Error') {
     super(InternalServerError.name, message);
     this.statusCode = 500;
@@ -26,6 +39,9 @@ class InternalServerError extends AppError {
 }
 
 class NotFoundError extends AppError {
+  /**
+   * @param {string} message
+   */
   constructor(message = 'Not Found') {
     super(NotFoundError.name, message);
     this.statusCode = 404;
@@ -33,6 +49,9 @@ class NotFoundError extends AppError {
 }
 
 class BadRequestError extends AppError {
+  /**
+   * @param {string} message
+   */
   constructor(message = 'Bad Request') {
     super(BadRequestError.name, message);
     this.statusCode = 400;
@@ -40,6 +59,9 @@ class BadRequestError extends AppError {
 }
 
 class ValidationError extends AppError {
+  /**
+   * @param {string} message
+   */
   constructor(message = 'Validation Error') {
     super(ValidationError.name, message);
     this.statusCode = 400;
