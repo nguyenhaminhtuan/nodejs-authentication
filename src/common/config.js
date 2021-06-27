@@ -43,7 +43,7 @@ module.exports = convict({
     logLevel: {
       env: 'LOG_LEVEL',
       format: ['trace', 'debug', 'info', 'warn', 'error', 'fatal'],
-      default: 'debug',
+      default: 'trace',
     },
     allowedHosts: {
       env: 'ALLOWED_HOSTS',
@@ -77,6 +77,37 @@ module.exports = convict({
       format: String,
       default: 'admin',
       sensitive: true,
+    },
+  },
+  redis: {
+    host: {
+      env: 'REDIS_HOST',
+      format: String,
+      default: '127.0.0.1',
+    },
+    port: {
+      env: 'REDIS_PORT',
+      format: 'port',
+      default: 6379,
+    },
+    password: {
+      env: 'REDIS_PASSWORD',
+      format: String,
+      default: null,
+      sensitive: true,
+    },
+  },
+  session: {
+    secret: {
+      env: 'SESSION_SECRET',
+      format: String,
+      default: 'meowmeowmeow',
+      sensitive: true,
+    },
+    timeout: {
+      env: 'SESSION_TIMEOUT',
+      format: 'int',
+      default: 30 * 60 * 1000,
     },
   },
 });
