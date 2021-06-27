@@ -68,6 +68,26 @@ class ValidationError extends AppError {
   }
 }
 
+class UnauthorizedError extends AppError {
+  /**
+   * @param {string} message
+   */
+  constructor(message = 'Unauthorized') {
+    super(UnauthorizedError.name, message);
+    this.statusCode = 401;
+  }
+}
+
+class ConflictError extends AppError {
+  /**
+   * @param {string} message
+   */
+  constructor(message = 'Conflict') {
+    super(ConflictError.name, message);
+    this.statusCode = 409;
+  }
+}
+
 module.exports = {
   AppError,
   HttpError,
@@ -75,4 +95,6 @@ module.exports = {
   NotFoundError,
   BadRequestError,
   ValidationError,
+  UnauthorizedError,
+  ConflictError,
 };

@@ -2,7 +2,7 @@
 const Ajv = require('ajv').default;
 const { ValidationError } = require('../common/errors');
 
-const ajv = new Ajv({ allErrors: true });
+const ajv = new Ajv({ allErrors: true, removeAdditional: 'all' });
 
 /**
  * @param {'query' | 'params' | 'body'} key
@@ -17,7 +17,7 @@ module.exports = function (key, schema) {
     if (!valid) {
       const err = new ValidationError();
       return res.status(err.statusCode).json({
-        err: err.name,
+        error: err.name,
         message: err.message,
         details: ajv.errorsText(validate.errors).split(','),
       });
