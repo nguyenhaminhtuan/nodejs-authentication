@@ -38,7 +38,7 @@ function handleError(err, req, res, next) {
 
     const error = new InternalServerError();
     res.status(500).json({ error: error.name, message: error.message });
-    process.exit(1);
+    process.kill(process.pid);
   }
 
   res
@@ -46,7 +46,7 @@ function handleError(err, req, res, next) {
     .json({ error: err.name, message: err.message });
 
   if (!(err instanceof AppError)) {
-    process.exit(1);
+    process.kill(process.pid);
   }
 }
 
